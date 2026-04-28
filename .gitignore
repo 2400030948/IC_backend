@@ -1,0 +1,6 @@
+target/
+.tools/
+*.log
+.env
+apache-maven-*.zip
+.mvn/wrapper/maven-wrapper.jar
