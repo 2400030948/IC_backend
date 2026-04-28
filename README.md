@@ -56,6 +56,9 @@ DB_URL=jdbc:mysql://${{MySQL.MYSQLHOST}}:${{MySQL.MYSQLPORT}}/${{MySQL.MYSQLDATA
 DB_USERNAME=${{MySQL.MYSQLUSER}}
 DB_PASSWORD=${{MySQL.MYSQLPASSWORD}}
 FRONTEND_ORIGIN=https://your-vercel-frontend-url.vercel.app
+DB_POOL_MAX_SIZE=3
+DB_POOL_MIN_IDLE=1
+TOMCAT_MAX_THREADS=50
 ```
 
 Railway provides `PORT` automatically. The app uses it through:
@@ -70,6 +73,8 @@ The backend is built with Docker on Railway:
 Builder: Dockerfile
 Dockerfile Path: Dockerfile
 ```
+
+The app is tuned for small Railway instances by limiting the Hikari MySQL connection pool and Tomcat worker threads. Avoid adding `spring-boot-devtools` in production.
 
 After deployment, your backend health URL will be:
 
