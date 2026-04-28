@@ -2,5 +2,6 @@ target/
 .tools/
 *.log
 .env
+local-env.bat
 apache-maven-*.zip
 .mvn/wrapper/maven-wrapper.jar
