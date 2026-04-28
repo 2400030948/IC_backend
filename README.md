@@ -40,6 +40,42 @@ The API runs at:
 http://localhost:5000/api
 ```
 
+## Railway Deployment
+
+This repo includes `railway.json` and `system.properties` for Railway.
+
+Deploy steps:
+
+1. Push this backend repo to GitHub.
+2. Open Railway and create a new project from the GitHub repo.
+3. Add a Railway MySQL database service.
+4. In the backend service, add these environment variables:
+
+```txt
+DB_URL=jdbc:mysql://${{MySQL.MYSQLHOST}}:${{MySQL.MYSQLPORT}}/${{MySQL.MYSQLDATABASE}}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+DB_USERNAME=${{MySQL.MYSQLUSER}}
+DB_PASSWORD=${{MySQL.MYSQLPASSWORD}}
+FRONTEND_ORIGIN=https://your-vercel-frontend-url.vercel.app
+```
+
+Railway provides `PORT` automatically. The app uses it through:
+
+```properties
+server.port=${PORT:5000}
+```
+
+After deployment, your backend health URL will be:
+
+```txt
+https://your-railway-backend-url/api/health
+```
+
+Use that Railway backend URL in your Vercel frontend variable:
+
+```txt
+VITE_API_BASE_URL=https://your-railway-backend-url/api
+```
+
 ## Demo Login
 
 | Role | Email | Password |
