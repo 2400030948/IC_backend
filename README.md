@@ -42,7 +42,7 @@ http://localhost:5000/api
 
 ## Railway Deployment
 
-This repo includes `railway.json` and `system.properties` for Railway.
+This repo includes `Dockerfile`, `.dockerignore`, `railway.json`, and `system.properties` for Railway.
 
 Deploy steps:
 
@@ -62,6 +62,13 @@ Railway provides `PORT` automatically. The app uses it through:
 
 ```properties
 server.port=${PORT:5000}
+```
+
+The backend is built with Docker on Railway:
+
+```txt
+Builder: Dockerfile
+Dockerfile Path: Dockerfile
 ```
 
 After deployment, your backend health URL will be:

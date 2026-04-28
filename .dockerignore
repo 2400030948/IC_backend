@@ -1,0 +1,7 @@
+target/
+.tools/
+.git/
+*.log
+.env
+local-env.bat
+apache-maven-*.zip
